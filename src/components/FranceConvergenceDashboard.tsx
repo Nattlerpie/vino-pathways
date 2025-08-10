@@ -254,7 +254,7 @@ const FranceConvergenceDashboard = () => {
                     />
                     <Tooltip 
                       formatter={(value, name) => [
-                        name === 'vulnerability' ? `Risk: ${(value * 100).toFixed(0)}%` : `Opportunity: ${value}%`,
+                        name === 'vulnerability' ? `Risk: ${(Number(value) * 100).toFixed(0)}%` : `Opportunity: ${value}%`,
                         name === 'vulnerability' ? 'Vulnerability' : 'Partnership Potential'
                       ]}
                       labelFormatter={(label) => `Transport Mode`}
@@ -344,14 +344,14 @@ const FranceConvergenceDashboard = () => {
                     <div className="flex justify-between text-sm mb-1">
                       <span className="capitalize">{type} Index</span>
                       <span className={`font-medium`} style={{ color: getVulnerabilityColor(score) }}>
-                        {(score * 100).toFixed(0)}% ({getRiskLevel(score)})
+                        {(Number(score) * 100).toFixed(0)}% ({getRiskLevel(score)})
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3">
                       <div
                         className="h-3 rounded-full transition-all duration-300"
                         style={{ 
-                          width: `${score * 100}%`,
+                          width: `${Number(score) * 100}%`,
                           backgroundColor: getVulnerabilityColor(score)
                         }}
                       ></div>
