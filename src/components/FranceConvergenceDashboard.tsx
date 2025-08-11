@@ -10,6 +10,22 @@ const FranceConvergenceDashboard = () => {
   const [selectedView, setSelectedView] = useState('convergence');
   const [vulnerabilityType, setVulnerabilityType] = useState('composite');
 
+  // Seasonal vulnerability data
+  const seasonalityData = [
+    { month: 'Jan', visitors: 25, wine_tourism: 15, cycling: 5, vulnerability: 0.8 },
+    { month: 'Fév', visitors: 28, wine_tourism: 18, cycling: 8, vulnerability: 0.75 },
+    { month: 'Mar', visitors: 45, wine_tourism: 35, cycling: 25, vulnerability: 0.6 },
+    { month: 'Avr', visitors: 65, wine_tourism: 55, cycling: 45, vulnerability: 0.45 },
+    { month: 'Mai', visitors: 85, wine_tourism: 80, cycling: 70, vulnerability: 0.25 },
+    { month: 'Jun', visitors: 95, wine_tourism: 90, cycling: 85, vulnerability: 0.15 },
+    { month: 'Jul', visitors: 100, wine_tourism: 100, cycling: 95, vulnerability: 0.1 },
+    { month: 'Aoû', visitors: 98, wine_tourism: 95, cycling: 90, vulnerability: 0.12 },
+    { month: 'Sep', visitors: 90, wine_tourism: 100, cycling: 80, vulnerability: 0.18 },
+    { month: 'Oct', visitors: 75, wine_tourism: 85, cycling: 65, vulnerability: 0.35 },
+    { month: 'Nov', visitors: 40, wine_tourism: 30, cycling: 20, vulnerability: 0.65 },
+    { month: 'Déc', visitors: 35, wine_tourism: 25, cycling: 15, vulnerability: 0.7 }
+  ];
+
   // French wine regions data (strategic focus on wine tourism convergence)
   const regions = {
     alsace: {
@@ -172,7 +188,7 @@ const FranceConvergenceDashboard = () => {
             {/* View Selection */}
             <div>
               <h3 className="text-sm font-semibold text-gray-700 mb-2">{t('analysisView')}</h3>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 <button
                   onClick={() => setSelectedView('convergence')}
                   className={`p-2 rounded-md text-sm transition-colors ${
@@ -182,6 +198,16 @@ const FranceConvergenceDashboard = () => {
                   }`}
                 >
                   {t('convergence')}
+                </button>
+                <button
+                  onClick={() => setSelectedView('seasonality')}
+                  className={`p-2 rounded-md text-sm transition-colors ${
+                    selectedView === 'seasonality'
+                      ? 'bg-green-500 text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  Saisonnalité
                 </button>
                 <button
                   onClick={() => setSelectedView('vulnerability')}
@@ -315,6 +341,91 @@ const FranceConvergenceDashboard = () => {
                 ))}
               </div>
               <p className="text-xs text-gray-500 mt-3">* Illustrative data for framework demonstration</p>
+            </div>
+          </div>
+        ) : selectedView === 'seasonality' ? (
+          /* Seasonality Analysis */
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* Seasonal Patterns */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <Calendar className="text-green-500" size={20} />
+                Seasonal Vulnerability Patterns
+              </h3>
+              
+              {/* Seasonality Explanation */}
+              <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                <h4 className="font-semibold text-green-800 mb-2">Gallego & Font V4/V5 Indicators:</h4>
+                <div className="text-sm text-green-700 space-y-1">
+                  <p><strong>V4 - Seasonal Concentration:</strong> Gini index of monthly distribution</p>
+                  <p><strong>V5 - Peak Season Dependency:</strong> % arrivals in highest month</p>
+                  <p><strong>Strategy:</strong> Target low-season months to reduce vulnerability</p>
+                </div>
+              </div>
+
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={seasonalityData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="wine_tourism" stroke="#dc2626" strokeWidth={3} name="Wine Tourism" />
+                    <Line type="monotone" dataKey="cycling" stroke="#059669" strokeWidth={2} name="Cycling Tourism" />
+                    <Line type="monotone" dataKey="visitors" stroke="#2563eb" strokeWidth={2} name="Total Visitors" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* Seasonal Strategy */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Seasonal Opportunity Targeting</h3>
+              
+              <div className="space-y-4">
+                <div className="border rounded-lg p-4 bg-red-50">
+                  <h4 className="font-semibold text-red-800 mb-2">High Vulnerability Months</h4>
+                  <div className="text-sm space-y-2">
+                    <div className="flex justify-between">
+                      <span>Janvier - Février</span>
+                      <span className="font-semibold text-red-600">Risque: 75-80%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Novembre - Décembre</span>
+                      <span className="font-semibold text-red-600">Risque: 65-70%</span>
+                    </div>
+                    <p className="text-red-700 mt-2">
+                      <strong>Strategy:</strong> Indoor experiences, winter festivals, wellness tourism
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border rounded-lg p-4 bg-green-50">
+                  <h4 className="font-semibold text-green-800 mb-2">Opportunity Periods</h4>
+                  <div className="text-sm space-y-2">
+                    <div className="flex justify-between">
+                      <span>Mars - Avril</span>
+                      <span className="font-semibold text-green-600">Potentiel: +40%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Octobre</span>
+                      <span className="font-semibold text-green-600">Potentiel: +35%</span>
+                    </div>
+                    <p className="text-green-700 mt-2">
+                      <strong>Strategy:</strong> Harvest experiences, spring cycling, shoulder season pricing
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border rounded-lg p-4 bg-blue-50">
+                  <h4 className="font-semibold text-blue-800 mb-2">Partnership Timing</h4>
+                  <div className="text-sm text-blue-700 space-y-1">
+                    <p><strong>Rail partnerships:</strong> Promote off-season packages</p>
+                    <p><strong>Cycling infrastructure:</strong> Spring/fall route development</p>
+                    <p><strong>Aviation:</strong> Seasonal capacity adjustments</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
