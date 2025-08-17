@@ -43,25 +43,60 @@ const FranceConvergenceDashboard = () => {
       description: t('regions.burgundy'),
       vulnerability: { weak: 0.29, strong: 0.68, mixed: 0.44 }
     },
+    bugey: {
+      name: "Bugey",
+      description: t('regions.bugey'),
+      vulnerability: { weak: 0.44, strong: 0.78, mixed: 0.55 }
+    },
     champagne: {
       name: "Champagne",
       description: t('regions.champagne'),
       vulnerability: { weak: 0.25, strong: 0.62, mixed: 0.39 }
     },
+    corsica: {
+      name: "Corsica",
+      description: t('regions.corsica'),
+      vulnerability: { weak: 0.52, strong: 0.85, mixed: 0.62 }
+    },
+    jura: {
+      name: "Jura",
+      description: t('regions.jura'),
+      vulnerability: { weak: 0.46, strong: 0.72, mixed: 0.54 }
+    },
     languedoc: {
-      name: "Languedoc-Roussillon",
+      name: "Languedoc Roussillon",
       description: t('regions.languedoc'),
       vulnerability: { weak: 0.41, strong: 0.73, mixed: 0.53 }
     },
-    loire: {
-      name: "Loire Valley",
-      description: t('regions.loire'),
-      vulnerability: { weak: 0.33, strong: 0.58, mixed: 0.42 }
+    lorraine: {
+      name: "Lorraine",
+      description: t('regions.lorraine'),
+      vulnerability: { weak: 0.48, strong: 0.74, mixed: 0.56 }
+    },
+    lyon: {
+      name: "Lyon",
+      description: t('regions.lyon'),
+      vulnerability: { weak: 0.35, strong: 0.66, mixed: 0.45 }
     },
     provence: {
       name: "Provence",
       description: t('regions.provence'),
       vulnerability: { weak: 0.28, strong: 0.69, mixed: 0.44 }
+    },
+    savoy: {
+      name: "Savoy",
+      description: t('regions.savoy'),
+      vulnerability: { weak: 0.43, strong: 0.71, mixed: 0.52 }
+    },
+    southwest: {
+      name: "South-West",
+      description: t('regions.southwest'),
+      vulnerability: { weak: 0.39, strong: 0.67, mixed: 0.49 }
+    },
+    loire: {
+      name: "Loire Valley",
+      description: t('regions.loire'),
+      vulnerability: { weak: 0.33, strong: 0.58, mixed: 0.42 }
     },
     rhone: {
       name: "Rhône Valley",
@@ -555,13 +590,22 @@ const FranceConvergenceDashboard = () => {
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            <button 
+              onClick={() => window.open('mailto:your.email@domain.com?subject=Partnership Analysis Discussion')}
+              className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
               Request Full Data Integration Proposal
             </button>
-            <button className="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-400 transition-colors">
+            <button 
+              onClick={() => window.open('mailto:your.email@domain.com?subject=Vulnerability Assessment Methodology')}
+              className="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-400 transition-colors"
+            >
               Vulnerability Assessment Methodology
             </button>
-            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors">
+            <button 
+              onClick={() => window.open('mailto:your.email@domain.com?subject=Regional Partnership Consulting')}
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+            >
               Regional Partnership Consulting
             </button>
           </div>
@@ -569,7 +613,7 @@ const FranceConvergenceDashboard = () => {
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-gray-500">
-          <p>{t('footerText')}</p>
+          <p>Strategic analysis by [Your Name] - Bridging academic research with business strategy</p>
           <p className="mt-2">{t('footerMethodology')}</p>
         </div>
       </div>
