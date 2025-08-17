@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, ScatterChart, Scatter, PieChart, Pie, Cell, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 import { AlertTriangle, TrendingUp, Users, MapPin, Plane, Train, Car, Ship, Utensils, TreePine, Activity, Calendar, Globe } from 'lucide-react';
@@ -195,6 +194,43 @@ const FranceConvergenceDashboard = () => {
           </p>
           <div className="text-sm text-gray-500 bg-white/50 rounded-lg p-2 inline-block">
             {t('methodology')}
+          </div>
+        </div>
+
+        {/* Strategic Framework - Moved to top for clarity */}
+        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-8 text-white text-center mb-6">
+          <h2 className="text-2xl font-bold mb-4">{t('strategicFramework')}</h2>
+          <p className="text-lg mb-4">
+            {t('frameworkDescription')}
+          </p>
+          <div className="bg-white/10 rounded-lg p-4 mb-6 text-left">
+            <h3 className="font-semibold mb-2">{t('dataIntegrationRequirements')}</h3>
+            <div className="text-sm space-y-1">
+              <p>• Tourism arrival statistics by origin country and season (INSEE, regional tourism boards)</p>
+              <p>• Transport mode usage data by wine region (SNCF, airports, cycling infrastructure data)</p>
+              <p>• Economic indicators: GDP contribution, employment by tourism type</p>
+              <p>• Partnership case studies: existing collaborations and success metrics</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button 
+              onClick={() => window.open('mailto:your.email@domain.com?subject=Partnership Analysis Discussion')}
+              className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Request Full Data Integration Proposal
+            </button>
+            <button 
+              onClick={() => window.open('mailto:your.email@domain.com?subject=Vulnerability Assessment Methodology')}
+              className="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-400 transition-colors"
+            >
+              Vulnerability Assessment Methodology
+            </button>
+            <button 
+              onClick={() => window.open('mailto:your.email@domain.com?subject=Regional Partnership Consulting')}
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+            >
+              Regional Partnership Consulting
+            </button>
           </div>
         </div>
 
@@ -573,43 +609,6 @@ const FranceConvergenceDashboard = () => {
             </div>
           </div>
         )}
-
-        {/* Strategic Recommendations with Data Transparency */}
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg p-8 text-white text-center">
-          <h2 className="text-2xl font-bold mb-4">{t('strategicFramework')}</h2>
-          <p className="text-lg mb-4">
-            {t('frameworkDescription')}
-          </p>
-          <div className="bg-white/10 rounded-lg p-4 mb-6 text-left">
-            <h3 className="font-semibold mb-2">{t('dataIntegrationRequirements')}</h3>
-            <div className="text-sm space-y-1">
-              <p>• Tourism arrival statistics by origin country and season (INSEE, regional tourism boards)</p>
-              <p>• Transport mode usage data by wine region (SNCF, airports, cycling infrastructure data)</p>
-              <p>• Economic indicators: GDP contribution, employment by tourism type</p>
-              <p>• Partnership case studies: existing collaborations and success metrics</p>
-            </div>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button 
-              onClick={() => window.open('mailto:your.email@domain.com?subject=Partnership Analysis Discussion')}
-              className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Request Full Data Integration Proposal
-            </button>
-            <button 
-              onClick={() => window.open('mailto:your.email@domain.com?subject=Vulnerability Assessment Methodology')}
-              className="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-400 transition-colors"
-            >
-              Vulnerability Assessment Methodology
-            </button>
-            <button 
-              onClick={() => window.open('mailto:your.email@domain.com?subject=Regional Partnership Consulting')}
-              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
-            >
-              Regional Partnership Consulting
-            </button>
-          </div>
-        </div>
 
         {/* Footer */}
         <div className="text-center mt-8 text-sm text-gray-500">
